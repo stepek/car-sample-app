@@ -1,6 +1,6 @@
 import RCSelect from "rc-select"
 
-import React, {useCallback, useState} from "react"
+import React from "react"
 import {createUseStyles} from "react-jss"
 
 export interface Options {
@@ -10,6 +10,7 @@ export interface Options {
 interface SelectProps {
   placeholder?: string
   options?: Options
+  value?: string
   onSelect?: (value: string) => void
 }
 
@@ -23,8 +24,10 @@ const useStyles = createUseStyles(theme => ({
     "& .rc-select-selection-search > input": {
       width: 0,
     },
+    marginBottom: "0.5em",
   },
   dropdown: {
+    background: "#ffffff",
     fontFamily: "Arial, sans-serif",
     border: "solid 1px #313131",
     "& .rc-select-item-option-active": {
@@ -33,24 +36,31 @@ const useStyles = createUseStyles(theme => ({
     "& .rc-select-item-option-selected": {
       background: "#808cb8",
     },
-    "& .rc-select-item-option": {
+    "& .rc-select-item-option, & .rc-select-item-empty": {
       padding: 15,
       "& .rc-select-item-option-state": {
         display: "none",
       },
     },
+
     "&&.rc-select-dropdown-hidden": {
       display: "none",
     },
   },
 }))
 
-export function Select({options = {}, placeholder, onSelect}: SelectProps) {
+export function Select({
+  options = {},
+  value,
+  placeholder,
+  onSelect,
+}: SelectProps) {
   const classes = useStyles()
 
   return (
     <RCSelect
       className={classes.select}
+      value={value}
       dropdownClassName={classes.dropdown}
       placeholder={placeholder}
       autoClearSearchValue={false}

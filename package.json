@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "snowpack dev",
+    "start:server": "node apiserver/server.js",
     "build": "snowpack build",
     "fmt": "prettier --write \"./**/*.{ts,tsx,js,jsx,css,scss}\"",
     "lint": "eslint ./src && prettier --check \"./**/*.{ts,tsx,js,jsx,css,scss}\"",

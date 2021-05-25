@@ -16,7 +16,9 @@ module.exports = {
     "redux-duck": "redux-duck/dist",
   },
   packageOptions: {},
-  devOptions: {},
+  devOptions: {
+    port: 8081,
+  },
   buildOptions: {
     baseUrl: "src/",
     out: "dist/",
